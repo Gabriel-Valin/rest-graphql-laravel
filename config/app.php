@@ -193,5 +193,5 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // ...
     ])->toArray(),
-
+    'GraphQL' => Nuwave\Lighthouse\Support\Facades\GraphQLFacade::class,
 ];
