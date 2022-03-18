@@ -19,4 +19,17 @@ produto.
 
 * [ ] Projeto conter um Dockerfile preparado para subir a API em um cluster Kubernetes.
 
+## Features adicionais:
+- [✅] Todo o CRUD feito com GraphQL tambem
+- [✅] Testes de Feature GraphQL
+- [✅] Testes de Feature REST
+
+## Design Patterns, SOLID & Clean Code
+- [✅] Separação das responsabilidades em camadas (Single Responsability).
+- [✅] Utilização de Form Request para validação de parâmetros obrigatórios.
+- [✅] Utilização dos Códigos HTTP corretamente.
+- [✅] Service & Repository Layers
+- [✅] Metodologia KISS (Keep it Simple, and Stupid!)
+- [✅] Fallback Route
+
 Criar README no formato MD (https://pt.wikipedia.org/wiki/Markdown)

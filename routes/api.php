@@ -4,6 +4,7 @@ use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\Products;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,8 @@ Route::group(['prefix' => 'products'], function (){
     Route::post('/', [ ProductController::class, 'createNewProduct' ]);
     Route::put('/{productId}', [ ProductController::class, 'updateProduct' ]);
     Route::delete('/{productId}', [ ProductController::class, 'deleteProduct' ]);
+});
+
+Route::fallback(function() {
+    return response()->json(['message' => 'No Route Found'], Response::HTTP_BAD_REQUEST);
 });
