@@ -17,7 +17,7 @@
 produto. 
 - [✅] Deve aceitar uma Query para retornar um produto baseado nos parâmetros.
 
-* [ ] Projeto conter um Dockerfile preparado para subir a API em um cluster Kubernetes.
+* [✅] Projeto conter um Dockerfile preparado para subir a API em um cluster Kubernetes.
 
 ## Features adicionais:
 - [✅] Todo o CRUD feito com GraphQL tambem
@@ -32,4 +32,13 @@ produto.
 - [✅] Metodologia KISS (Keep it Simple, and Stupid!)
 - [✅] Fallback Route
 
-Criar README no formato MD (https://pt.wikipedia.org/wiki/Markdown)
+
+# Rodando projeto
+- Clone o projeto
+- Rode `docker-compose up -d --build`
+- Acesse `docker exec -it graphql-rest_laravel-app_1 bash`
+- `php artisan migrate`
+- `php artisan db:seed`
+
+# Rodando os testes:
+- `php artisan test`

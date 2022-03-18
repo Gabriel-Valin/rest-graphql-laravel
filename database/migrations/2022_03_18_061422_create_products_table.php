@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('category');
             $table->string('color');
-            $table->decimal('price', 7, 2);
+            $table->integer('price');
             $table->softDeletes();
             $table->timestamps();
         });
