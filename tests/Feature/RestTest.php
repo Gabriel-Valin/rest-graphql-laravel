@@ -37,6 +37,11 @@ class RestTest extends TestCase
                 ->has('data.productPrice')
         );
         $response->assertStatus(Response::HTTP_OK);
+        
+        $this->assertDatabaseHas('products', [
+            'id' => $product->id,
+            'name' => $product->name
+        ]);
     }
 
     public function test_create_new_product() 
@@ -57,6 +62,10 @@ class RestTest extends TestCase
                 ->has('data.productPrice')
         );
         $response->assertStatus(Response::HTTP_CREATED);
+
+        $this->assertDatabaseHas('products', [
+            'name' => 'Tdd product'
+        ]);
     }
 
     public function test_update_product()
@@ -72,9 +81,25 @@ class RestTest extends TestCase
         ]);
 
         $response->assertStatus(Response::HTTP_NO_CONTENT);
+
+        $this->assertDatabaseHas('products', [
+            'id' => $product->id,
+            'name' => 'Product UPDATED'
+        ]);
     }
 
-    public function test_delete_product()
+    public function test_delete_product() 
+    {
+        $product = Product::factory()->create();
+        $response = $this->delete('api/products/'.$product->id);
+        $response->assertStatus(Response::HTTP_NO_CONTENT);
+        
+        $this->assertSoftDeleted('products', [
+            'id' => $product->id,
+        ]);
+    }
+
+    public function test_non_existent_delete_product()
     {
         $response = $this->delete('api/products/1010');
 
