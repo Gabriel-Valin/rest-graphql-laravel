@@ -51,25 +51,13 @@ class ProductService {
 
     public function deleteProduct(int $productId) 
     {
-        $product = $this->productRepository->getProduct($productId);
-
-        if (!$product) {
-            response()->json('Product not found.', Response::HTTP_NO_CONTENT);
-        }
-
-        $this->productRepository->deleteProduct($productId);
+        return $this->productRepository->deleteProduct($productId);
     }
 
     public function updateProduct(int $productId, array $data) 
     {
-        $product = $this->productRepository->getProduct($productId);
-
-        if (!$product) {
-            response()->json('Product not found.', Response::HTTP_NO_CONTENT);
+        if ($this->productRepository->getProduct($productId)) {
+            return $this->productRepository->updateProduct($productId, $data);
         }
-
-        $updateProduct = $this->productRepository->updateProduct($productId, $data);
-        
-        return $updateProduct;
     }
 }
