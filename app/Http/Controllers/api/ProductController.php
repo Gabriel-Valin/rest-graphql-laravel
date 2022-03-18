@@ -10,6 +10,7 @@ use App\Http\Requests\CreateProduct;
 use App\Http\Requests\UpdateProduct;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProductController extends Controller {
@@ -20,9 +21,9 @@ class ProductController extends Controller {
         $this->productService = $productService;
     }
 
-    public function getAllProducts(): JsonResource 
+    public function getAllProducts(Request $request): JsonResource 
     {
-        $products = $this->productService->getAllProducts();
+        $products = $this->productService->getAllProducts($request->all());
         return ProductResource::collection($products);
     }
 

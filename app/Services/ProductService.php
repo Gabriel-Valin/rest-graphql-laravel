@@ -13,9 +13,17 @@ class ProductService {
         $this->productRepository = $productRepository;
     }
 
-    public function getAllProducts() 
+    public function getAllProducts(array $params, $limit = 10, $page = 1) 
     {
-        $products = $this->productRepository->getAllProducts();
+        if (isset($params['limit'])) {
+            $limit = $params['limit'];
+        }
+
+        if (isset($params['page'])) {
+            $page = $params['page'];
+        }
+        
+        $products = $this->productRepository->getAllProducts($limit, $page);
         
         if (!$products) {
             response()->json('No products registered.', Response::HTTP_NO_CONTENT);

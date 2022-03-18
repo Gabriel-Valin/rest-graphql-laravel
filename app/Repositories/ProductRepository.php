@@ -12,9 +12,9 @@ class ProductRepository {
         $this->entity = $product;
     }
 
-    public function getAllProducts() 
+    public function getAllProducts(int $perPage, int $page) 
     {
-        return $this->entity->all();
+        return $this->entity->paginate($perPage, ['*'], 'products', $page);
     }
 
     public function getProduct(int $identify) 
