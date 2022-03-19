@@ -36,9 +36,10 @@ produto.
 # Rodando projeto
 - Clone o projeto
 - Rode `docker-compose up -d --build`
-- Acesse `docker exec -it graphql-rest_laravel-app_1 bash`
-- `php artisan migrate`
-- `php artisan db:seed`
+- Acesse `docker-compose exec app bash`
+- `composer install`
+- `php artisan key:generate`
+- Acesse a url: http://localhost:8989
 
 # Rodando os testes:
 - `php artisan test`
